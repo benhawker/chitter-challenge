@@ -7,7 +7,7 @@ class Peep
 
 	property :id, Serial
 	# add validations to peep content length min and max
-	property :content, String, :required => true #, :min => 1 ,:length => 1..140
+	property :content, String, :required => true, :length => 250 #, :min => 1 ,:length => 1..140
 	property :time, Time, :required => true
 	
 	validates_presence_of :content, :time

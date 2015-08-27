@@ -2,14 +2,29 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 <div id="main">
-	<h4> Peeps </h4>
+	<h2>Tweets</h2>
 	<ul id="peeps">
 		<% @peeps.each do |peep| %>
-			<li>User: <%= peep.user.username %>  <span>Time: <%= peep.time %></span></li>
-		  <li class="content">Content: <%= peep.content %></li>
+			<li class="user">
+			<span>Posted by </span> <%= peep.user.username %>
+			<span><span>Posted at</span> <%= peep.time %></span></li>
+		  <li class="content"><%= peep.content %></li>
 		<%end%>
 	</ul>
 
-	<div id="right_section"> Right section </div>
+	<div id="right_section"> 
+		<div class="user_profile"> 
+			<h2>Profile</h2>
+		</div>
+
+		<div class="trending">
+			<h2>Trending</h2>
+		</div>
+
+		<div class="recent_images">
+			<h2>Recent Images</h2> 
+		</div>
+	</div>
+
 </div>
 
