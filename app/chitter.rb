@@ -83,14 +83,13 @@ class Chitter < Sinatra::Base
   end
 
   post "/peeps" do
-   current_user.peeps.create(content: params[:content], time: Time.now)
-   p Peep.first.user.username
-   redirect to("/peeps")
+    # look into use of DM TimeStamp rather than Time.now
+    current_user.peeps.create(content: params[:content], time: Time.now)
+    redirect to("/peeps")
   end
 
 
   helpers do
-
   	def current_user
       current_user ||= User.get(session[:user_id])
     end
@@ -102,9 +101,7 @@ class Chitter < Sinatra::Base
   	def token?
     	User.first(password_token: session[:token])
   	end
-
   end
 
-  # start the server if ruby file executed directly
   run! if app_file == $0
 end

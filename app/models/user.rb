@@ -17,7 +17,7 @@ class User
 	validates_format_of :email, :as => :email_address
 	validates_confirmation_of :password
 
-	#Validate should not be required //
+	#validates should not be required due to above validation :unique => true
 	validates_uniqueness_of :email
 	validates_uniqueness_of :username
 

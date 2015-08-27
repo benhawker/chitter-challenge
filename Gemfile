@@ -7,6 +7,7 @@ group :test do
   gem 'cucumber'
   gem 'capybara'
   gem 'rspec-sinatra'
+  gem 'factory_girl'
   gem 'sinatra-base'
   gem 'sinatra-partial'
   gem 'rubocop-rspec'
