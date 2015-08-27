@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-group :test do
   gem 'byebug'
   gem 'rspec'
   gem 'cucumber'
@@ -19,5 +18,5 @@ group :test do
 	gem 'dm-validations'
 	gem 'sinatra-flash'
 	gem 'database_cleaner'
-end
+
 
