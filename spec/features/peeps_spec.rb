@@ -5,8 +5,8 @@ feature "Viewing & Creating Peeps" do
 	 	sign_in(user)
 		visit "/peeps/new"
 	 	fill_in "content", with: "I am a test peep"
-	 	click_button "Peep"
-	 	expect(current_path).to eq "/peeps"
+	 	click_button "Tweet"
+	 	expect(current_path).to eq "/"
 	 	expect(page).to have_content "I am a test peep"
 	end
 
@@ -14,7 +14,7 @@ feature "Viewing & Creating Peeps" do
 	 	sign_in(user)
 		visit "/peeps/new"
 	 	fill_in "content", with: "I am a test peep"
-	 	click_button "Peep"
+	 	click_button "Tweet"
 	 	visit "/"
 	 	expect(page).to have_content "I am a test peep"
 	end
@@ -23,7 +23,7 @@ feature "Viewing & Creating Peeps" do
 	 	sign_in(user)
 		visit "/peeps/new"
 	 	fill_in "content", with: "I am a test peep"
-	 	click_button "Peep"
+	 	click_button "Tweet"
 	 	visit "/"
 	 	expect(page).to have_content user.username
 	end

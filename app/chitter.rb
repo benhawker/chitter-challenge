@@ -12,14 +12,14 @@ class Chitter < Sinatra::Base
 	use Rack::MethodOverride
 
   get '/' do
-  	@peeps = Peep.all
+  	@peeps = Peep.all(:order => [ :time.desc ], :limit => 10)
+    
     erb :index
   end
 
   get '/users/new' do
   	@user = User.new
   	erb :"users/new"
-  	
   end
 
   post '/users' do
@@ -33,23 +33,24 @@ class Chitter < Sinatra::Base
   	else
   			flash.now[:errors] = @user.errors.full_messages
   			erb :"users/new"
+        # consider redirect to index
   	end
   end
 
-  get "/users/password_reset" do
-    erb :"users/password_reset"
-  end
+  # get "/users/password_reset" do
+  #   erb :"users/password_reset"
+  # end
 
-  post "/users/password_reset" do
-    user = User.first(email: params[:email])
-    user.update(password_token: rand_token)
-    flash[:notice] = 'Check your emails'
-  end
+  # post "/users/password_reset" do
+  #   user = User.first(email: params[:email])
+  #   user.update(password_token: rand_token)
+  #   flash[:notice] = 'Success! To reset your password, click the link in the email we have sent you.'
+  # end
 
-  get "/users/password_reset_reset/:token" do
-  	session[:token] = params[:token]
-  	erb :"users/password_reset_reset"
-  end
+  # get "/users/password_reset_reset/:token" do
+  # 	session[:token] = params[:token]
+  # 	erb :"users/password_reset_reset"
+  # end
 
   get "/sessions/new" do
   	erb :"sessions/new"
@@ -62,7 +63,8 @@ class Chitter < Sinatra::Base
   		redirect to('/')
   	else
   		flash.now[:errors] =  ['The email or password is incorrect']
-  		erb :"sessions/new"
+  		# erb :"sessions/new"
+      erb :index
   	end
   end
 
@@ -72,11 +74,11 @@ class Chitter < Sinatra::Base
   	redirect "/"
   end
 
-  get "/peeps" do
-  	@peeps = Peep.all
-    # (:order => [ :time.desc ])
-  	erb :"peeps/index"
-  end
+  # get "/peeps" do
+  # 	@peeps = Peep.all
+  #   # (:order => [ :time.desc ])
+  # 	erb :"peeps/index"
+  # end
 
   get "/peeps/new" do
   	erb :"peeps/new"
@@ -85,7 +87,7 @@ class Chitter < Sinatra::Base
   post "/peeps" do
     # look into use of DM TimeStamp rather than Time.now
     current_user.peeps.create(content: params[:content], time: Time.now)
-    redirect to("/peeps")
+    redirect to("/")
   end
 
 

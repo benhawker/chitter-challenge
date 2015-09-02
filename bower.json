@@ -1,0 +1,17 @@
+{
+  "name": "Twitter Clone",
+  "version": "0.0.0",
+  "homepage": "https://github.com/benhawker/chitter-challenge",
+  "authors": [
+    "Ben <ben.c.hawker@gmail.com>"
+  ],
+  "description": "A basic Twitter clone build with Sinatra",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

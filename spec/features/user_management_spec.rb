@@ -57,25 +57,6 @@ feature "User sign out" do
 	end
 end
 
-feature "Password recovery" do
-	let(:user) { FactoryGirl.create(:user) }
-
-	scenario "requesting a password reset" do
-		visit "users/password_reset"
-		fill_in "email", with: user.email
-		click_button "Request New Password"
-		user = User.first
-		expect(user.password_token).not_to be_nil
-		expect(page).to have_content "Check your email"
-	end
-
-	scenario "actually resetting the password" do
-		user.update(password_token: 'token')
-		visit "/users/password_reset_reset/#{user.password_token}"
-		expect(page.status_code).to eq 200
-		expect(page).to have_content "enter a new password"
-	end
-end
 
 
 

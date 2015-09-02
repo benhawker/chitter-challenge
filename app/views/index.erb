@@ -12,18 +12,32 @@
 		<%end%>
 	</ul>
 
-	<div id="right_section"> 
+	<div id="right_section">
+	 <% if current_user %>
 		<div class="user_profile"> 
-			<h2>Profile</h2>
+			<h2>Post a Tweet</h2>
+			<% if current_user %>
+				<form method='post' action='/peeps'>
+	   			<textarea id="tweetField" cols="42" rows="7" name='content' onkeyup="countChar(this)"></textarea> 
+	   			<br>
+	  			<input type='submit' value='Tweet'>
+	  			<p id="counter">Counter: <span>0</span></p>
+				</form>
+			<% end %>	
 		</div>
+		 <% end %>
 
 		<div class="trending">
 			<h2>Trending</h2>
+			<ul id="trendingPeep">
+	    	<li><span> Posted by: </span><span><%= @peeps.last.user.username %> </span></li>
+		  	<li><%= @peeps.last.content %> </li>
+
+		  	<li><span>Posted by: </span><span><%= @peeps.first.user.username %> </span></li>
+		  	<li><%= @peeps.first.content %> </li>
+			</ul>
 		</div>
 
-		<div class="recent_images">
-			<h2>Recent Images</h2> 
-		</div>
 	</div>
 
 </div>

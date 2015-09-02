@@ -2,12 +2,14 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 
-<h1>Please sign up</h1>
+<div id="sign_up">
+	<h1>Sign Up</h1>
+	<form action='/users' method='post'>
+	  <li><label>Email: </label><input name='signUpEmail' type='email' value='<%= @user.email %>'> </li>
+	  <li><label>Username: </label><input name='signUpUsername' type='text' value='<%= @user.username %>'> </li>
 
-<form action='/users' method='post'>
-  Email: <input name='email' type='email' value='<%= @user.email %>'>
-  Username: <input name='username' type='text' value='<%= @user.username %>'>
-  Password: <input name='password' type='password'>
-  Password Confirmation: <input name='password_confirmation' type='password'>
-  <input type='submit' value='Sign Up'>
-</form>
+	  <li><label>Password: </label><input name='signUpPassword' type='password'> </li>
+	  <li><label>Confirm Password: </label><input name='password_confirmation' type='password'> </li>
+	  <li><input id="signUpConfirm" type='submit' value='Sign Up'></li>
+	</form>
+</div>
