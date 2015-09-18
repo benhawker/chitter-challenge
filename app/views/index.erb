@@ -3,6 +3,7 @@
 
 <div id="main">
 	<h2>Tweets</h2>
+	<% unless @peeps.empty? %>
 	<ul id="peeps">
 		<% @peeps.each do |peep| %>
 			<li class="user">
@@ -11,6 +12,7 @@
 		  <li class="content"><%= peep.content %></li>
 		<%end%>
 	</ul>
+	<% end %>
 
 	<div id="right_section">
 	 <% if current_user %>
@@ -29,6 +31,7 @@
 
 		<div class="trending">
 			<h2>Trending</h2>
+			<% unless @peeps.empty? %>
 			<ul id="trendingPeep">
 	    	<li><span> Posted by: </span><span><%= @peeps.last.user.username %> </span></li>
 		  	<li><%= @peeps.last.content %> </li>
@@ -36,6 +39,7 @@
 		  	<li><span>Posted by: </span><span><%= @peeps.first.user.username %> </span></li>
 		  	<li><%= @peeps.first.content %> </li>
 			</ul>
+			<% end %>
 		</div>
 
 	</div>
